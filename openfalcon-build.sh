@@ -130,6 +130,7 @@ fi
 
 # Graph
 if [ ! -z $BUILD_GRAPH ] && $BUILD_GRAPH ; then
+  export GODEBUG=cgocheck=0
   build graph
 fi
 
