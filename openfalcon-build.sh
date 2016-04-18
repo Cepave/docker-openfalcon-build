@@ -12,7 +12,7 @@ export WORKPATH=$GITHUB/$WORKDIR
 rm -fR $GITHUB
 mkdir -p $WORKPATH
 git clone --quiet -b develop https://github.com/Cepave/open-falcon.git $WORKPATH
-cd $WORKPATH && git submodule update --quiet --init --recursive
+cd $WORKPATH && git submodule update --quiet --init --recursive && git submodule foreach --quiet git checkout -f $REMOTE/$BRANCH
 
 #######################################
 # Parse Arguments
@@ -102,7 +102,6 @@ mkdir -p $PACKDIR
 
 function _build() {
   cd $WORKPATH/$1
-  git checkout -f $REMOTE/$BRANCH
   go get ./...
   if [ "$2" = "do_build" ] ; then
     ./control build
