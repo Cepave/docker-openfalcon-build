@@ -12,7 +12,9 @@ export WORKPATH=$GITHUB/$WORKDIR
 rm -fR $GITHUB
 mkdir -p $WORKPATH
 git clone --quiet -b develop https://github.com/Cepave/open-falcon.git $WORKPATH
-cd $WORKPATH && git submodule update --quiet --init --recursive && git submodule foreach --quiet git checkout -f $REMOTE/$BRANCH
+cd $WORKPATH && git submodule update --quiet --init \
+  && git submodule foreach --quiet git checkout -f $REMOTE/$BRANCH \
+  && git submodule foreach --quiet git submodule update --quiet --remote --init
 
 #######################################
 # Parse Arguments
