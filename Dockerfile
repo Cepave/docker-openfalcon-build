@@ -5,7 +5,7 @@ MAINTAINER minimum@cepave.com
 # Build Open-Falcon Components
 RUN \
   mkdir /package \
-  && apk add --update git gcc bash perl
+  && apk add --update git g++ bash perl
 
 WORKDIR /root
 
