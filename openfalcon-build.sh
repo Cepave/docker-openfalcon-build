@@ -99,7 +99,7 @@ done
 #######################################
 export PACKDIR=/package
 export LOGFILE=$PACKDIR/filelist.txt
-rm -fR $PACKDIR
+rm -fR $PACKDIR/*
 mkdir -p $PACKDIR
 
 function _build() {

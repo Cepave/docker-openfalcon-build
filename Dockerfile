@@ -1,16 +1,16 @@
-FROM minimum/openfalcon-golang
+FROM golang:1.6-alpine
 
 MAINTAINER minimum@cepave.com
 
 # Build Open-Falcon Components
-VOLUME /package
-
 RUN \
-  apt-get update && \
-  apt-get install -y git gcc
+  mkdir /package \
+  && apk add --update git gcc bash perl
 
-COPY openfalcon-build.sh /home/build.sh
+WORKDIR /root
+
+COPY openfalcon-build.sh build.sh
 
 # Start
-ENTRYPOINT ["/home/build.sh"]
+ENTRYPOINT ["./build.sh"]
 CMD ["all"]
